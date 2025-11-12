@@ -1,0 +1,92 @@
+from random import randrange
+
+# Başlangıç tahtası
+board = [[1, 2, 3],
+         [4, 'X', 6],
+         [7, 8, 9]]
+
+# İlk tahta görünümü
+def display_board(board):
+    print("+-------+-------+-------+")
+    for row in board:
+        print("|       |       |       |")
+        print(f"|   {row[0]}   |   {row[1]}   |   {row[2]}   |")
+        print("|       |       |       |")
+        print("+-------+-------+-------+")
+
+display_board(board)
+
+# Kullanıcı hamlesi
+while True:
+    # Kullanıcının hamlesini alalım
+    def enter_move(board):
+        while True:
+            try:
+                move = int(input("Hamleni yap: "))
+                if move < 1 or move > 9:
+                    print("1 ile 9 arasında bir sayı gir.")
+                    continue
+                row = (move - 1) // 3
+                col = (move - 1) % 3
+                if board[row][col] in ['O', 'X']:
+                    print("Bu kare dolu, başka birini seç.")
+                    continue
+                board[row][col] = 'O'
+                break
+            except ValueError:
+                print("Geçerli bir sayı gir.")
+
+    enter_move(board)
+    display_board(board)
+
+    # Kazanma kontrolü
+    def victory_for(board, sign):
+        # Satır
+        for row in board:
+            if all(cell == sign for cell in row):
+                return True
+        # Sütun
+        for col in range(3):
+            if all(board[row][col] == sign for row in range(3)):
+                return True
+        # Çapraz
+        if all(board[i][i] == sign for i in range(3)) or all(board[i][2 - i] == sign for i in range(3)):
+            return True
+        return False
+
+    if victory_for(board, 'O'):
+        print("Kazandın!")
+        break
+
+    # --- Boş kareleri bulmak için fonksiyon ---
+    def make_list_of_free_fields(board):
+        free = []
+        for i in range(3):
+            for j in range(3):
+                if board[i][j] not in ['O', 'X']:
+                    free.append((i, j))
+        return free
+
+    if not make_list_of_free_fields(board):
+        print("Berabere!")
+        break
+
+    # --- Bilgisayar hamlesi için fonksiyon ---
+    def draw_move(board):
+        free = make_list_of_free_fields(board)
+        if not free:
+            return
+        move = randrange(len(free))
+        row, col = free[move]
+        board[row][col] = 'X'
+
+    draw_move(board)
+    display_board(board)
+
+    if victory_for(board, 'X'):
+        print("Bilgisayar kazandı!")
+        break
+
+    if not make_list_of_free_fields(board):
+        print("Berabere!")
+        break
