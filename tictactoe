@@ -58,7 +58,7 @@ while True:
         print("Kazandın!")
         break
 
-    # --- Boş kareleri bulmak için fonksiyon ---
+    # Boş kareleri bulmak için fonksiyon
     def make_list_of_free_fields(board):
         free = []
         for i in range(3):
@@ -71,7 +71,7 @@ while True:
         print("Berabere!")
         break
 
-    # --- Bilgisayar hamlesi için fonksiyon ---
+    # Bilgisayar hamlesi için fonksiyon
     def draw_move(board):
         free = make_list_of_free_fields(board)
         if not free:
