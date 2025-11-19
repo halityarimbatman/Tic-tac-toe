@@ -35,3 +35,5 @@ Tic-tac-toe-main klasörüne erişip
 python tictactoe
 
 yazarak enter'a basınız.
+
+daha sonra oyun bitene kadar her roundda hamlenizi yapmak istediğiniz karenin numarasını girerek enter'a basınız.
