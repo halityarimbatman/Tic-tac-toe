@@ -30,6 +30,7 @@ Bir oyuncu kendi işaretini bu üçlülerden birine eksiksiz yerleştirirse kaza
 Oyunu Çalıştırmak İçin
 terminal veya komut satırında:
 
-python tic_tac_toe.py
+Tic-tac-toe-main klasörüne erişip
+python tictactoe
 
 yazarak enter'a basınız.
