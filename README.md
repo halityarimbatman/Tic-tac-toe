@@ -31,6 +31,7 @@ Oyunu Çalıştırmak İçin
 terminal veya komut satırında:
 
 Tic-tac-toe-main klasörüne erişip
+
 python tictactoe
 
 yazarak enter'a basınız.
